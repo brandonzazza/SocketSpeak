@@ -5,32 +5,34 @@ public class client extends JFrame {
 
     public client() {
         setTitle("SocketSpeak");
-        setSize(400, 300);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(2, 2));
+        setResizable(false);
+        setLayout(new BorderLayout());
+        
+        int topHeight = (int) (getHeight() * (2.0 / 3.0));
 
-        JPanel ipField = field("Server IP");
-        JPanel passField = field("Password");
+        JPanel inputFields = new JPanel();
+        inputFields.setPreferredSize(new Dimension(getWidth(), topHeight));
+        // JPanel passField = inputField("Password");
 
-        add(ipField);
-        add(passField);
+        add(inputFields, BorderLayout.NORTH);
 
         setVisible(true);
     }
+    // private static JPanel inputField(String fieldName) {
+    //     JPanel panel = new JPanel();
 
-    private static JPanel field(String fieldName) {
-        JPanel panel = new JPanel();
+    //     JLabel label = new JLabel(fieldName);
+    //     label.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel label = new JLabel(fieldName);
-        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+    //     JTextField text = new JTextField(10);
+    //     text.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JTextField text = new JTextField(10);
-        text.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        panel.add(label);
-        panel.add(text);
-        return panel;
-    }
+    //     panel.add(label);
+    //     panel.add(text);
+    //     return panel;
+    // }
 
     public static void main(String[] args) {
         new client();
