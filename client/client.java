@@ -5,7 +5,7 @@ public class client extends JFrame {
 
     public client() {
         setTitle("SocketSpeak");
-        setSize(800, 600);
+        setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(new BorderLayout());
@@ -15,12 +15,18 @@ public class client extends JFrame {
         JPanel userInputFields = new JPanel();
         userInputFields.setPreferredSize(new Dimension(getWidth(), topHeight));
         userInputFields.setLayout(new BoxLayout(userInputFields, BoxLayout.Y_AXIS));
-
-        JPanel userActionPanel = new JPanel();
-        userActionPanel.setPreferredSize(new Dimension(getWidth(), (int) (getHeight() * (1.0 / 3.0))));
+        userInputFields.add(Box.createVerticalGlue());
 
         addInputField(userInputFields, "IP:");
         addInputField(userInputFields, "Password:");
+
+        JPanel userActionPanel = new JPanel();
+        userActionPanel.setPreferredSize(new Dimension(getWidth(), (int) (getHeight() * (1.0 / 3.0))));
+        userActionPanel.add(Box.createVerticalGlue());
+
+        JButton submitButton = new JButton("Submit");
+        userActionPanel.add(submitButton);
+        
 
         add(userInputFields, BorderLayout.CENTER);
         add(userActionPanel, BorderLayout.SOUTH);
@@ -29,7 +35,6 @@ public class client extends JFrame {
     }
 
     private static void addInputField(JPanel panel, String fieldName) {
-
         JLabel label = new JLabel(fieldName);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
 
