@@ -14,7 +14,7 @@ public class client extends JFrame {
 
         JPanel userInputFields = new JPanel();
         userInputFields.setPreferredSize(new Dimension(getWidth(), topHeight));
-        // userInputFields.setLayout();
+        userInputFields.setLayout(new BoxLayout(userInputFields, BoxLayout.Y_AXIS));
 
         JPanel userActionPanel = new JPanel();
         userActionPanel.setPreferredSize(new Dimension(getWidth(), (int) (getHeight() * (1.0 / 3.0))));
@@ -22,7 +22,7 @@ public class client extends JFrame {
         addInputField(userInputFields, "IP:");
         addInputField(userInputFields, "Password:");
 
-        add(userInputFields, BorderLayout.NORTH);
+        add(userInputFields, BorderLayout.CENTER);
         add(userActionPanel, BorderLayout.SOUTH);
 
         setVisible(true);
@@ -35,9 +35,12 @@ public class client extends JFrame {
 
         JTextField text = new JTextField(10);
         text.setAlignmentX(Component.CENTER_ALIGNMENT);
+        text.setMaximumSize(new Dimension(250, 30));
 
         panel.add(label);
         panel.add(text);
+        panel.add(Box.createVerticalStrut(10));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     }
 
     public static void main(String[] args) {
