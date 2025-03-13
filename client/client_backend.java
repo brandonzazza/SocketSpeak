@@ -30,6 +30,15 @@ public class client_backend {
         return true;
     }
 
+    public boolean sendMessage(String message) {
+        try {
+            out.writeUTF(message);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public boolean disconnect() {
         try {
             in.close();
@@ -47,6 +56,7 @@ public class client_backend {
 
         client_backend cli = new client_backend();
         cli.connect("127.0.0.1", "Password");
+        cli.sendMessage("Hello From Client");
         try {
             System.out.println("Waiting for 5 seconds before disconnecting...");
             Thread.sleep(5000);  // Wait for 5 seconds (5000 milliseconds)
