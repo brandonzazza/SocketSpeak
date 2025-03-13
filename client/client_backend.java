@@ -42,4 +42,18 @@ public class client_backend {
             return false;
         }
     }
+
+    public static void main(String[] args) {
+
+        client_backend cli = new client_backend();
+        cli.connect("127.0.0.1", "Password");
+        try {
+            System.out.println("Waiting for 5 seconds before disconnecting...");
+            Thread.sleep(5000);  // Wait for 5 seconds (5000 milliseconds)
+        } catch (InterruptedException e) {
+            System.out.println("Sleep interrupted: " + e.getMessage());
+        }
+        cli.disconnect();
+
+    }
 }
